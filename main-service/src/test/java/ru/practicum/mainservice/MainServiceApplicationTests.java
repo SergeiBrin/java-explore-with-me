@@ -1,10 +1,10 @@
-package ru.practicum.explorewithme;
+package ru.practicum.mainservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExploreWithMeApplicationTests {
+class MainServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
