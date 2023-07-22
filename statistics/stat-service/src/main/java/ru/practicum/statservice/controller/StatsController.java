@@ -31,8 +31,8 @@ public class StatsController {
                                                        @RequestParam(defaultValue = "") List<String> uris,
                                                        @RequestParam(defaultValue = "false") Boolean unique) {
         log.info("");
-
         List<ViewStatsDto> viewStats = service.getStats(start, end, uris, unique);
+
         return new ResponseEntity<>(viewStats, HttpStatus.OK);
     }
 
