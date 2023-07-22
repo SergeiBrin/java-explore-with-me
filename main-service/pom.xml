@@ -9,8 +9,8 @@
 		<relativePath>../statistics/pom.xml</relativePath>
 	</parent>
 
-	<name>main-service</name>
-	<artifactId>main</artifactId>
+    <name>main-service</name>
+    <artifactId>main</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
