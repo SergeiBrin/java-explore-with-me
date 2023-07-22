@@ -41,6 +41,7 @@ public class HttpClient {
 
         return response;
     }
+
     public ResponseEntity<Void> createHit(EndpointHitDto endpointHitDto) {
         ResponseEntity<Void> status = restTemplate.postForEntity(POST_URI, endpointHitDto, Void.class);
         log.info("");
