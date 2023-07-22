@@ -30,7 +30,8 @@ public class StatsController {
                                                         LocalDateTime end,
                                                        @RequestParam(defaultValue = "") List<String> uris,
                                                        @RequestParam(defaultValue = "false") Boolean unique) {
-        log.info("");
+        log.info("Поступил GET запрос в StatsController. Метод getStats(), " +
+                        "start={}, end={}, uris={}, unique={}", start, end, uris, unique);
         List<ViewStatsDto> viewStats = service.getStats(start, end, uris, unique);
 
         return new ResponseEntity<>(viewStats, HttpStatus.OK);
@@ -41,7 +42,7 @@ public class StatsController {
     @PostMapping("/hit")
     @ResponseStatus(HttpStatus.CREATED)
     public void createHit(@Valid @RequestBody EndpointHitDto hitDto) {
-        log.info("");
+        log.info("Поступил POST запрос в StatsController. Метод createHit(), hitDto={}", hitDto);
         service.createHit(hitDto);
     }
 }

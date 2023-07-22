@@ -36,7 +36,7 @@ public class StatsServiceImpl implements StatsService {
     public void createHit(EndpointHitDto hitDto) {
         EndpointHit buildHit = EndpointHitMapper.buildEndpointHit(hitDto);
         repository.save(buildHit);
-        log.info("");
+        log.info("POST запрос в StatsController обработан успешно. Метод createHit(), hitDto={}", hitDto);
     }
 
     @Transactional(readOnly = true)
@@ -46,12 +46,14 @@ public class StatsServiceImpl implements StatsService {
 
         if (!uris.isEmpty()) {
             stats = repository.getUniqueStatisticsWithCheckingLinks(start, end, uris, page);
-            log.info("");
+            log.info("GET запрос в StatsController обработан успешно. Метод getStatisticsWithUniqueIp(), " +
+                     "start={}, end={}, uris={}", start, end, uris);
             return stats;
         }
 
         stats = repository.getUniqueStatisticsWithoutCheckingLinks(start, end, page);
-        log.info("");
+        log.info("GET запрос в StatsController обработан успешно. Метод getStatisticsWithUniqueIp(), " +
+                 "start={}, end={}", start, end);
         return stats;
     }
 
@@ -62,12 +64,14 @@ public class StatsServiceImpl implements StatsService {
 
         if (!uris.isEmpty()) {
             stats = repository.getStatisticsWithCheckingLinks(start, end, uris, page);
-            log.info("");
+            log.info("GET запрос в StatsController обработан успешно. Метод getStatisticsWithoutUniqueIp(), " +
+                     "start={}, end={}, uris={}", start, end, uris);
             return stats;
         }
 
         stats = repository.getStatisticsWithoutCheckingLinks(start, end, page);
-        log.info("");
+        log.info("GET запрос в StatsController обработан успешно. Метод getStatisticsWithoutUniqueIp(), " +
+                 "start={}, end={}", start, end);
         return stats;
     }
 }
