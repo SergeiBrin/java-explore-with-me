@@ -37,7 +37,7 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<environmentVariables>
-						<SPRING_DATASOURCE_URL>jdbc:postgresql://localhost:5432/ewm/</SPRING_DATASOURCE_URL>
+						<SPRING_DATASOURCE_URL>jdbc:postgresql://localhost:5432/ewm</SPRING_DATASOURCE_URL>
 						<POSTGRES_USER>admin</POSTGRES_USER>
 						<POSTGRES_PASSWORD>admin</POSTGRES_PASSWORD>
 					</environmentVariables>
