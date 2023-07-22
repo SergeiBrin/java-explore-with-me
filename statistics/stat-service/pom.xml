@@ -35,6 +35,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -51,19 +57,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
-				<configuration>
-					<environmentVariables>
-						<SPRING_DATASOURCE_URL>jdbc:postgresql://localhost:5432/stats</SPRING_DATASOURCE_URL>
-						<POSTGRES_USER>admin</POSTGRES_USER>
-						<POSTGRES_PASSWORD>admin</POSTGRES_PASSWORD>
-					</environmentVariables>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
