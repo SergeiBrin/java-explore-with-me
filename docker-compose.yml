@@ -9,7 +9,7 @@ services:
     depends_on:
       - stats-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db-container:5432/stats
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
 
@@ -24,7 +24,7 @@ services:
       - POSTGRES_DB=stats
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      - TZ=Europe/Moscow
+      - TZ=Asia/Yekaterinburg
 
   ewm-service:
     build: ./main-service
@@ -35,7 +35,8 @@ services:
     depends_on:
       - ewm-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db-container:5432/ewm
+      - STATISTICS_SERVER_URL=http://stats-server:9090
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
 
@@ -48,5 +49,4 @@ services:
       - POSTGRES_DB=ewm
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      - TZ=Europe/Moscow
-
+      - TZ=Asia/Yekaterinburg
