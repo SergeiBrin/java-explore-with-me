@@ -26,7 +26,7 @@ public class AdminUserController {
                                                         @RequestParam(defaultValue = "0") @PositiveOrZero int from,
                                                         @RequestParam(defaultValue = "10") @Positive int size) {
         log.info("Поступил GET запрос в AdminUserController. Метод findUsersByIds(), ids={}", ids);
-        List<UserDto> findUsers= userService.findUsers(ids, from, size);
+        List<UserDto> findUsers = userService.findUsers(ids, from, size);
 
         return new ResponseEntity<>(findUsers, HttpStatus.OK);
     }
