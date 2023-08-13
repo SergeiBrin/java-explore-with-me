@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.model.dto;
+package ru.practicum.mainservice.user.model.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +23,6 @@ public class NewUserRequest {
     @NotBlank
     @Size(min = 2, max = 250)
     private String name;
+
+    private boolean privateAccount;
 }

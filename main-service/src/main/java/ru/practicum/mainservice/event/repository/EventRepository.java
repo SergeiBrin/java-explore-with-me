@@ -23,6 +23,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByIdIn(Set<Long> eventIds);
 
+    List<Event> findByInitiatorIdAndStateAndEventDateAfter(Long userId, State state, LocalDateTime dateTime, Pageable page);
+
     // Admin GET events со временем
     @Query("SELECT e " +
             "FROM Event as e " +

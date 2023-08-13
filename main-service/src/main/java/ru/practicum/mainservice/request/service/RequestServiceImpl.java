@@ -16,8 +16,8 @@ import ru.practicum.mainservice.request.model.dto.EventRequestStatusUpdateReques
 import ru.practicum.mainservice.request.model.dto.EventRequestStatusUpdateResult;
 import ru.practicum.mainservice.request.model.dto.ParticipationRequestDto;
 import ru.practicum.mainservice.request.repository.RequestRepository;
-import ru.practicum.mainservice.user.model.User;
-import ru.practicum.mainservice.user.service.UserService;
+import ru.practicum.mainservice.user.model.user.User;
+import ru.practicum.mainservice.user.service.user.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,18 +120,18 @@ public class RequestServiceImpl implements RequestService {
             return buildResult;
         }
 
-    // 2. нельзя подтвердить заявку, если уже достигнут лимит по заявкам на данное событие (Ожидается код ошибки 409)
-        Long findConfirmedRequests = requestRepository.countByEventIdAndStatus(eventId, RequestStatus.CONFIRMED);
-        Integer participantLimit = findEvent.getParticipantLimit();
-        if (findConfirmedRequests == participantLimit.longValue()) {
-            throw new ConflictException("The participant limit has been reached");
-        }
-
-    // 3. статус можно изменить только у заявок, находящихся в состоянии ожидания (Ожидается код ошибки 409)
+        // 2. статус можно изменить только у заявок, находящихся в состоянии ожидания (Ожидается код ошибки 409)
         Long findPendingRequests = requestRepository.countByIdInAndStatus(requestIds, RequestStatus.PENDING);
         // Если findPendingRequests меньше, чем ids.size(), значит ids - не все PENDING
         if (findPendingRequests < requestIds.size()) {
             throw new ConflictException("status can only be changed for applications that are in the pending state");
+        }
+
+        // 3. нельзя подтвердить заявку, если уже достигнут лимит по заявкам на данное событие (Ожидается код ошибки 409)
+        Long findConfirmedRequests = requestRepository.countByEventIdAndStatus(eventId, RequestStatus.CONFIRMED);
+        Integer participantLimit = findEvent.getParticipantLimit();
+        if (findConfirmedRequests == participantLimit.longValue()) {
+            throw new ConflictException("The participant limit has been reached");
         }
 
         // Если статус на обновление REJECTED, то все отклоняем и возвращаем.

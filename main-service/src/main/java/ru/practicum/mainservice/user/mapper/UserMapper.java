@@ -1,8 +1,8 @@
 package ru.practicum.mainservice.user.mapper;
 
-import ru.practicum.mainservice.user.model.User;
-import ru.practicum.mainservice.user.model.dto.NewUserRequest;
-import ru.practicum.mainservice.user.model.dto.UserDto;
+import ru.practicum.mainservice.user.model.dto.user.NewUserRequest;
+import ru.practicum.mainservice.user.model.dto.user.UserDto;
+import ru.practicum.mainservice.user.model.user.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +13,7 @@ public class UserMapper {
         return User.builder()
                 .name(newUserRequest.getName())
                 .email(newUserRequest.getEmail())
+                .privateAccount(newUserRequest.isPrivateAccount())
                 .build();
     }
 
@@ -21,6 +22,7 @@ public class UserMapper {
                 .id(userId)
                 .name(userDto.getName())
                 .email(userDto.getEmail())
+                .privateAccount(userDto.isPrivateAccount())
                 .build();
     }
 
@@ -29,6 +31,7 @@ public class UserMapper {
                 .email(user.getEmail())
                 .id(user.getId())
                 .name(user.getName())
+                .privateAccount(user.getPrivateAccount())
                 .build();
     }
 

@@ -5,7 +5,7 @@ import ru.practicum.mainservice.request.enums.RequestStatus;
 import ru.practicum.mainservice.request.model.Request;
 import ru.practicum.mainservice.request.model.dto.EventRequestStatusUpdateResult;
 import ru.practicum.mainservice.request.model.dto.ParticipationRequestDto;
-import ru.practicum.mainservice.user.model.User;
+import ru.practicum.mainservice.user.model.user.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

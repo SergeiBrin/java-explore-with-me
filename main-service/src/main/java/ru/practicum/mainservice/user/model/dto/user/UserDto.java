@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.model.dto;
+package ru.practicum.mainservice.user.model.dto.user;
 
 import lombok.*;
 
@@ -13,4 +13,6 @@ public class UserDto {
     private Long id;
 
     private String name;
+
+    private boolean privateAccount;
 }

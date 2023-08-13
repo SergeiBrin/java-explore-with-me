@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.model;
+package ru.practicum.mainservice.user.model.user;
 
 import lombok.*;
 
@@ -19,4 +19,7 @@ public class User {
     private String name;
 
     private String email;
+
+    @Column(name = "private_account")
+    private Boolean privateAccount;
 }
