@@ -1,7 +1,7 @@
-package ru.practicum.mainservice.user.model.dto.subscription;
+package ru.practicum.mainservice.subscription.model.dto;
 
 import lombok.*;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
 
 import javax.validation.constraints.NotNull;
 import java.util.Set;

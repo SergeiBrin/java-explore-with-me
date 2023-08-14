@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.enums;
+package ru.practicum.mainservice.subscription.enums;
 
 public enum SubscriptionStatus {
     PENDING,

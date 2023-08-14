@@ -16,8 +16,8 @@ import ru.practicum.mainservice.request.model.dto.EventRequestStatusUpdateReques
 import ru.practicum.mainservice.request.model.dto.EventRequestStatusUpdateResult;
 import ru.practicum.mainservice.request.model.dto.ParticipationRequestDto;
 import ru.practicum.mainservice.request.repository.RequestRepository;
-import ru.practicum.mainservice.user.model.user.User;
-import ru.practicum.mainservice.user.service.user.UserService;
+import ru.practicum.mainservice.user.model.User;
+import ru.practicum.mainservice.user.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

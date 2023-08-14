@@ -1,15 +1,15 @@
-package ru.practicum.mainservice.user.controller.user;
+package ru.practicum.mainservice.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.mainservice.user.model.dto.subscription.SubscriptionDto;
-import ru.practicum.mainservice.user.model.dto.user.NewUserRequest;
-import ru.practicum.mainservice.user.model.dto.user.UserDto;
-import ru.practicum.mainservice.user.service.subscription.SubscriptionService;
-import ru.practicum.mainservice.user.service.user.UserService;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.subscription.service.SubscriptionService;
+import ru.practicum.mainservice.user.model.dto.NewUserRequest;
+import ru.practicum.mainservice.user.model.dto.UserDto;
+import ru.practicum.mainservice.user.service.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

@@ -1,8 +1,8 @@
-package ru.practicum.mainservice.user.model.subscription;
+package ru.practicum.mainservice.subscription.model;
 
 import lombok.*;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
-import ru.practicum.mainservice.user.model.user.User;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
+import ru.practicum.mainservice.user.model.User;
 
 import javax.persistence.*;
 

@@ -6,7 +6,7 @@ import ru.practicum.mainservice.category.model.Category;
 import ru.practicum.mainservice.compilation.model.Compilation;
 import ru.practicum.mainservice.event.enums.State;
 import ru.practicum.mainservice.location.model.Location;
-import ru.practicum.mainservice.user.model.user.User;
+import ru.practicum.mainservice.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

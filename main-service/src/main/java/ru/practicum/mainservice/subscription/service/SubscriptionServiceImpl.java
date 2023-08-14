@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.service.subscription;
+package ru.practicum.mainservice.subscription.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,14 +13,14 @@ import ru.practicum.mainservice.event.model.dto.EventShortDto;
 import ru.practicum.mainservice.event.repository.EventRepository;
 import ru.practicum.mainservice.exception.model.ConflictException;
 import ru.practicum.mainservice.exception.model.NotFoundException;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
-import ru.practicum.mainservice.user.mapper.SubscriptionMapper;
-import ru.practicum.mainservice.user.model.dto.subscription.SubscriptionDto;
-import ru.practicum.mainservice.user.model.dto.subscription.UpdateSubscriptionDto;
-import ru.practicum.mainservice.user.model.subscription.Subscription;
-import ru.practicum.mainservice.user.model.user.User;
-import ru.practicum.mainservice.user.repository.subscription.SubscriptionRepository;
-import ru.practicum.mainservice.user.service.user.UserService;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
+import ru.practicum.mainservice.subscription.mapper.SubscriptionMapper;
+import ru.practicum.mainservice.subscription.model.Subscription;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.subscription.model.dto.UpdateSubscriptionDto;
+import ru.practicum.mainservice.subscription.repository.SubscriptionRepository;
+import ru.practicum.mainservice.user.model.User;
+import ru.practicum.mainservice.user.service.UserService;
 import ru.practicum.mainservice.utils.PageRequestFactory;
 
 import java.time.LocalDateTime;

@@ -1,9 +1,9 @@
-package ru.practicum.mainservice.user.service.subscription;
+package ru.practicum.mainservice.subscription.service;
 
 import ru.practicum.mainservice.event.model.dto.EventShortDto;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
-import ru.practicum.mainservice.user.model.dto.subscription.SubscriptionDto;
-import ru.practicum.mainservice.user.model.dto.subscription.UpdateSubscriptionDto;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.subscription.model.dto.UpdateSubscriptionDto;
 
 import java.util.List;
 

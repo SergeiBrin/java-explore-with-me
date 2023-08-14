@@ -19,8 +19,8 @@ import ru.practicum.mainservice.exception.model.InvalidDateTimeException;
 import ru.practicum.mainservice.exception.model.NotFoundException;
 import ru.practicum.mainservice.location.model.Location;
 import ru.practicum.mainservice.location.service.LocationService;
-import ru.practicum.mainservice.user.model.user.User;
-import ru.practicum.mainservice.user.service.user.UserService;
+import ru.practicum.mainservice.user.model.User;
+import ru.practicum.mainservice.user.service.UserService;
 import ru.practicum.mainservice.utils.PageRequestFactory;
 
 import java.time.LocalDateTime;

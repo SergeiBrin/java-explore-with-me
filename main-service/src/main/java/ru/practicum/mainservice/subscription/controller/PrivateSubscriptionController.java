@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.controller.subscription;
+package ru.practicum.mainservice.subscription.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.mainservice.event.model.dto.EventShortDto;
-import ru.practicum.mainservice.user.model.dto.subscription.SubscriptionDto;
-import ru.practicum.mainservice.user.service.subscription.SubscriptionService;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.subscription.service.SubscriptionService;
 
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;

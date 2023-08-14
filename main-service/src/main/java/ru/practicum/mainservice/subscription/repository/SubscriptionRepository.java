@@ -1,10 +1,10 @@
-package ru.practicum.mainservice.user.repository.subscription;
+package ru.practicum.mainservice.subscription.repository;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
-import ru.practicum.mainservice.user.model.subscription.Subscription;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
+import ru.practicum.mainservice.subscription.model.Subscription;
 
 import java.util.List;
 import java.util.Optional;

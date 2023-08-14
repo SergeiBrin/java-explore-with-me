@@ -1,10 +1,10 @@
-package ru.practicum.mainservice.user.mapper;
+package ru.practicum.mainservice.subscription.mapper;
 
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.mainservice.user.enums.SubscriptionStatus;
-import ru.practicum.mainservice.user.model.dto.subscription.SubscriptionDto;
-import ru.practicum.mainservice.user.model.subscription.Subscription;
-import ru.practicum.mainservice.user.model.user.User;
+import ru.practicum.mainservice.subscription.enums.SubscriptionStatus;
+import ru.practicum.mainservice.subscription.model.Subscription;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.user.model.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

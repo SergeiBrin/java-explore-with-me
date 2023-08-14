@@ -13,8 +13,8 @@ import ru.practicum.mainservice.event.model.dto.*;
 import ru.practicum.mainservice.location.model.Location;
 import ru.practicum.mainservice.request.enums.RequestStatus;
 import ru.practicum.mainservice.request.service.RequestService;
-import ru.practicum.mainservice.user.model.dto.user.UserShortDto;
-import ru.practicum.mainservice.user.model.user.User;
+import ru.practicum.mainservice.user.model.User;
+import ru.practicum.mainservice.user.model.dto.UserShortDto;
 import ru.practicum.statclient.client.HttpClient;
 import ru.practicum.statdto.dto.ViewStatsDto;
 

@@ -1,4 +1,4 @@
-package ru.practicum.mainservice.user.model.dto.user;
+package ru.practicum.mainservice.user.model.dto;
 
 import lombok.*;
 
