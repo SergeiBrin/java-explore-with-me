@@ -32,6 +32,18 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleIllegalArgumentException(final IllegalArgumentException e) {
+        log.warn("");
+        return new ApiError(
+                Arrays.asList(e.getStackTrace()),
+                e.getMessage(),
+                "Incorrectly made request.",
+                HttpStatus.BAD_REQUEST,
+                LocalDateTime.now());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleInvalidDateTimeException(final InvalidDateTimeException e) {
         log.warn("");
         return new ApiError(

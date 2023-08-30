@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.mainservice.subscription.model.dto.SubscriptionDto;
+import ru.practicum.mainservice.subscription.service.SubscriptionService;
 import ru.practicum.mainservice.user.model.dto.NewUserRequest;
 import ru.practicum.mainservice.user.model.dto.UserDto;
 import ru.practicum.mainservice.user.service.UserService;
@@ -18,8 +20,21 @@ import java.util.List;
 @RequestMapping("/admin/users")
 @RequiredArgsConstructor
 @Slf4j
+// Контроллер админа для пользователей
 public class AdminUserController {
     private final UserService userService;
+    private final SubscriptionService subscriptionService;
+
+    // Возможность для админа получать данные подписок по id
+    @GetMapping("/subscriptions")
+    public ResponseEntity<List<SubscriptionDto>> findSubscriptionsByIds(@RequestParam(required = true) List<Long> ids,
+                                                                        @RequestParam(defaultValue = "0") @PositiveOrZero int from,
+                                                                        @RequestParam(defaultValue = "10") @Positive int size) {
+        log.info("Поступил GET запрос в AdminUserController. Метод findSubscriptionsByIds(), ids={}", ids);
+        List<SubscriptionDto> findSubscriptions = subscriptionService.findSubscriptionsByIds(ids, from, size);
+
+        return new ResponseEntity<>(findSubscriptions, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<UserDto>> findUsersByIds(@RequestParam(required = false) List<Long> ids,

@@ -1,0 +1,1732 @@
+{
+	"info": {
+		"_postman_id": "d96c3f71-cca6-4a31-8860-540772e7bc4f",
+		"name": "Explore With Me Subscriptions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25032133"
+	},
+	"item": [
+		{
+			"name": "Subscribers",
+			"item": [
+				{
+					"name": "Добавление нового запроса на подписку в не private аккаунт",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(201); // проверка того, что код ответа равен 201 Created\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление нового пользователя с private аккаунтом",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(201); // проверка того, что код ответа равен 201 Created\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Иван Иванов\",\r\n    \"email\": \"ivan.ivanov@example.com\",\r\n    \"privateAccount\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление нового запроса на подписку в аккаунт private",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(201); // проверка того, что код ответа равен 201 Created\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть PENDING\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"PENDING\"); // проверка того, что статус равен \"PENDING\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка добавления повторного запроса на подписку",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 409\", function() {\r",
+									"    pm.response.to.have.status(409); // проверка того, что код ответа равен 409 Conflict\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения несуществующим подписчиком записи о статусе подписки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(404); // проверка того, что код ответа равен 404 Not found\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/1050/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"1050",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение подписчиком списка APPROVED подписок",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения несуществующим подписчиком списка APPROVED подписок",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(404); // проверка того, что код ответа равен 404 Not found\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/1002/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"1002",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение подписчиком списка актуальных событий пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения списка актуальных событий пользователя не подписчиком",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(404); // проверка того, что код ответа равен 404 Not found\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/1/3/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"1",
+								"3",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Подтверждение подписки пользователем",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriberIds\": [2],\r\n    \"status\": \"APPROVED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Обновление статуса подписки пользователем с некорректным статусом",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(409); // проверка того, что код ответа равен 409 Conflict\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriberIds\": [2],\r\n    \"status\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка подтверждения статуса уже одобренной подписки пользователем",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(409); // проверка того, что код ответа равен 409 Conflict\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriberIds\": [2],\r\n    \"status\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение подписчиком списка APPROVED подписок после нового подтверждения",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 201 Created\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[1].id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[1].status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отклонение подписки пользователем",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"REJECTED\"); // проверка того, что статус \"REJECTED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriberIds\": [2],\r\n    \"status\": \"REJECTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка отклонить уже отклоненную подписку пользователем",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(409); // проверка того, что код ответа равен 409 Conflict\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subscriberIds\": [2],\r\n    \"status\": \"PENDING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение подписчиком списка APPROVED подписок отклонения одной подписки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение пользователем списка заявок на подписку - по статусу",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/3?status=APPROVED",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "APPROVED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения пользователем списка заявок на подписку - без RequestParam",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(400); // проверка того, что код ответа равен 400 Bad Request\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/3?status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения пользователем не с private аккаунтом списка заявок на подписку - cо статусом PENDING",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(400); // проверка того, что код ответа равен 400 Bad Request\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/3?status=PENDING",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "PENDING"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения пользователем не с private аккаунтом списка заявок на подписку - cо статусом CANCEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(400); // проверка того, что код ответа равен 400 Bad Request\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/3?status=CANCEL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CANCEL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение админом списка подписок по ids",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Created\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть APPROVED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[0].status).to.eql(\"APPROVED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[1].id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть REJECTED\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body[1].status).to.eql(\"REJECTED\"); // проверка того, что статус равен \"APPROVED\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admin/users/subscriptions?ids=1,2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"users",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1,2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка получения админом списка подписок - без RequestParam",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(400); // проверка того, что код ответа равен 400 Bad Request\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admin/users/subscriptions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"users",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка отмены подписчиком несуществующей заявки на подписку",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(404); // проверка того, что код ответа равен 404 Not Found\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/1/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отмена подписчиком первой заявки на подписку",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть CANCEL\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"CANCEL\"); // проверка того, что статус равен \"CANCEL\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/136/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"136",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Попытка отмены подписчиком уже отмененной заявки на подписку",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(409); // проверка того, что код ответа равен 409 Conflict\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/136/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"136",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отмена подписчиком второй заявки на подписку",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть CANCEL\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"CANCEL\"); // проверка того, что статус равен \"CANCEL\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение записи о статусе отмененной подписки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 2\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(2); // проверка того, что id равно 2\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть CANCEL\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"CANCEL\"); // проверка того, что статус равен \"CANCEL\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/136",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"136"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение записи о статусе отмененной подписки",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"id должен быть 1\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.id).to.eql(1); // проверка того, что id равно 1\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Статус должен быть CANCEL\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.status).to.eql(\"CANCEL\"); // проверка того, что статус равен \"CANCEL\"\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка APPROVED подписок после нового подтверждения Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(200); // проверка того, что код ответа равен 200 Ok\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									"   pm.test(\"тело ответа должно быть массивом\", function() {\r",
+									"    const body = pm.response.json(); \r",
+									"    pm.expect(body).is.an('array'); // проверяем, что тело ответа является массивом\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Размер массива должен быть равен 0\", function() {\r",
+									"    const body = pm.response.json();\r",
+									"    pm.expect(body.length).to.eql(0); // проверка того, что размер массива равен 0\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/confirmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение подписчиком списка актуальных событий пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									" pm.response.to.have.status(404); // проверка того, что код ответа равен 404 Not Found\r",
+									"    pm.response.to.be.withBody; // проверка того, что ответ содержит тело\r",
+									"    pm.response.to.be.json; // проверка того, что тело ответа находится в формате JSON   \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscriptions/2/3/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscriptions",
+								"2",
+								"3",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
