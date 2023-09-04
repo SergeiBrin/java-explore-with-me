@@ -1,4 +1,4 @@
-# Explore-with-me
+# Проект Explore-with-me  
 
 ## EDT схема
 ![Cхема](https://github.com/SergeiBrin/java-explore-with-me/blob/main/EDT%20ewm.png)
